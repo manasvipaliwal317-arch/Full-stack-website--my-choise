@@ -1,4 +1,4 @@
-# 👑 ZENVIA Atelier — Full-Stack Luxury E-Commerce Website
+# 🛍️ MY CHOISE — Full-Stack Luxury E-Commerce Website
 
 A production-ready, full-stack luxury E-Commerce application built using **Next.js 15 (App Router)**, **React 19**, **TypeScript**, **Tailwind CSS**, **Framer Motion**, **Prisma ORM**, and **Neon PostgreSQL**.
 
@@ -51,10 +51,10 @@ Create a `.env` or `.env.local` file in the root directory:
 DATABASE_URL="postgresql://user:password@ep-sample-123456.us-east-2.aws.neon.tech/neondb?sslmode=require"
 
 # JWT Secret for Session Authentication
-JWT_SECRET="zenvia_super_secret_jwt_key_2026_production"
+JWT_SECRET="my_choise_super_secret_jwt_key_2026_production"
 
 # Canonical Public Web URL
-NEXT_PUBLIC_APP_URL="https://zenvia-atelier.netlify.app"
+NEXT_PUBLIC_APP_URL="https://my-choise.netlify.app"
 ```
 
 ---
