@@ -65,82 +65,86 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 bg-black/80 backdrop-blur-md"
+          className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"
         />
 
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 15 }}
-          className="relative w-full max-w-md bg-[#0F111A] border border-white/10 rounded-2xl shadow-2xl p-6 sm:p-8 z-10 overflow-hidden"
+          className="relative w-full max-w-md bg-white border border-slate-200 rounded-3xl shadow-2xl p-6 sm:p-8 z-10 overflow-hidden"
         >
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white flex items-center justify-center transition-colors"
+            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-900 flex items-center justify-center transition-colors"
+            aria-label="Close"
           >
             <X className="w-4 h-4" />
           </button>
 
           <div className="text-center mb-6">
-            <h3 className="text-2xl font-serif font-bold text-white">
-              {mode === "login" ? "Client Sign In" : "Create Atelier Account"}
+            <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 mb-3 font-bold text-xl shadow-inner">
+              <User className="w-6 h-6" />
+            </div>
+            <h3 className="text-2xl font-black text-slate-900">
+              {mode === "login" ? "Sign In to my choise" : "Create Account"}
             </h3>
-            <p className="text-xs text-zinc-400 mt-1">
-              Access bespoke orders, private collections, & wishlist features.
+            <p className="text-xs text-slate-500 mt-1 font-medium">
+              Access your orders, saved addresses, wishlist, and fast checkout.
             </p>
           </div>
 
           {error && (
-            <div className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs flex items-center gap-2">
+            <div className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 text-xs flex items-center gap-2">
               <ShieldAlert className="w-4 h-4 shrink-0" />
               <span>{error}</span>
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3.5">
             {mode === "register" && (
               <div>
-                <label className="block text-xs font-semibold text-zinc-300 mb-1">Full Name</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Full Name</label>
                 <div className="relative">
-                  <User className="absolute left-3.5 top-3 w-4 h-4 text-zinc-500" />
+                  <User className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
                   <input
                     type="text"
                     required
-                    placeholder="Lady Eleanor Vance"
+                    placeholder="John Doe"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-luxury-gold"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white"
                   />
                 </div>
               </div>
             )}
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-300 mb-1">Email Address</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1">Email Address</label>
               <div className="relative">
-                <Mail className="absolute left-3.5 top-3 w-4 h-4 text-zinc-500" />
+                <Mail className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
                 <input
                   type="email"
                   required
-                  placeholder="client@zenvia.com"
+                  placeholder="name@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-luxury-gold"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-300 mb-1">Password</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1">Password</label>
               <div className="relative">
-                <Lock className="absolute left-3.5 top-3 w-4 h-4 text-zinc-500" />
+                <Lock className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
                 <input
                   type="password"
                   required
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-luxury-gold"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white"
                 />
               </div>
             </div>
@@ -148,25 +152,25 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-luxury-gold-dark via-luxury-gold to-luxury-gold-light text-black font-bold text-sm hover:brightness-110 transition-all shadow-lg shadow-luxury-gold/15 mt-2"
+              className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-blue-500/20 mt-2"
             >
-              {loading ? "Authenticating..." : mode === "login" ? "Sign In to Account" : "Register Account"}
+              {loading ? "Please wait..." : mode === "login" ? "Sign In" : "Create Account"}
             </button>
           </form>
 
-          {/* Quick Demo Fill */}
-          <div className="mt-4 pt-4 border-t border-white/10 flex justify-between items-center text-xs">
+          {/* Quick Demo Fill & Switch */}
+          <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs">
             <button
               onClick={handleDemoAdmin}
-              className="text-luxury-gold hover:underline font-medium"
+              className="text-blue-600 hover:underline font-semibold"
             >
               ⚡ Fill Admin Demo Credentials
             </button>
             <button
               onClick={() => setMode(mode === "login" ? "register" : "login")}
-              className="text-zinc-400 hover:text-white"
+              className="text-slate-500 hover:text-slate-900 font-medium"
             >
-              {mode === "login" ? "Need an account? Register" : "Have an account? Sign in"}
+              {mode === "login" ? "New customer? Register" : "Already registered? Sign In"}
             </button>
           </div>
         </motion.div>

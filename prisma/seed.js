@@ -61,8 +61,8 @@ const PRODUCTS = [
       "Limited Edition #12 of 50 Pieces"
     ],
     images: [
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop"
+      "/products/smartwatch-black.jpg",
+      "/products/smartwatch-gold.jpg"
     ]
   },
   {

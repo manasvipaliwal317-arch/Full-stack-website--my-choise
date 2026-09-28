@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Star, ShoppingBag, Heart, ShieldCheck, Truck, RefreshCw } from "lucide-react";
+import { X, Star, ShoppingBag, Heart, ShieldCheck, Truck, RotateCcw, Check } from "lucide-react";
 import { ProductItem } from "@/lib/data";
 import { useCart } from "@/context/cart-context";
 import { formatCurrency, calculateDiscountPercentage } from "@/lib/utils";
@@ -17,11 +17,21 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
   const { addToCart, toggleWishlist, isInWishlist } = useCart();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [added, setAdded] = useState(false);
 
   if (!product) return null;
 
   const discountPercent = calculateDiscountPercentage(product.price, product.discountPrice || product.price);
   const inWishlist = isInWishlist(product.id);
+
+  const handleAddToCart = () => {
+    addToCart(product, quantity);
+    setAdded(true);
+    setTimeout(() => {
+      setAdded(false);
+      onClose();
+    }, 1000);
+  };
 
   return (
     <AnimatePresence>
@@ -32,7 +42,7 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 bg-black/80 backdrop-blur-md"
+          className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"
         />
 
         {/* Modal Window */}
@@ -40,28 +50,30 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          transition={{ type: "spring", duration: 0.5 }}
-          className="relative w-full max-w-4xl max-h-[90vh] bg-[#0F111A] border border-white/10 rounded-2xl shadow-2xl overflow-hidden overflow-y-auto z-10 grid grid-cols-1 md:grid-cols-2"
+          transition={{ type: "spring", duration: 0.4 }}
+          className="relative w-full max-w-4xl max-h-[90vh] bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden overflow-y-auto z-10 grid grid-cols-1 md:grid-cols-2"
         >
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-black/60 hover:bg-black text-zinc-400 hover:text-white border border-white/10 flex items-center justify-center transition-colors"
+            className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 flex items-center justify-center transition-colors"
+            aria-label="Close"
           >
             <X className="w-5 h-5" />
           </button>
 
           {/* Left Column - Gallery */}
-          <div className="p-6 bg-black/30 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/10">
-            <div className="relative w-full aspect-square rounded-xl overflow-hidden border border-white/10 bg-zinc-900 group">
+          <div className="p-6 bg-slate-50 flex flex-col justify-between border-b md:border-b-0 md:border-r border-slate-200">
+            <div className="relative w-full aspect-square rounded-2xl overflow-hidden border border-slate-200 bg-white p-4">
               <Image
                 src={product.images[selectedImageIndex] || product.images[0]}
                 alt={product.title}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-contain p-4"
               />
               {discountPercent > 0 && (
-                <span className="absolute top-3 left-3 bg-red-500/90 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-red-400/30">
+                <span className="absolute top-3 left-3 bg-amber-400 text-slate-950 text-xs font-black px-2.5 py-1 rounded-lg shadow-sm">
                   -{discountPercent}% OFF
                 </span>
               )}
@@ -74,126 +86,144 @@ export function QuickViewModal({ product, onClose }: QuickViewModalProps) {
                   <button
                     key={idx}
                     onClick={() => setSelectedImageIndex(idx)}
-                    className={`relative w-16 h-16 rounded-lg overflow-hidden border-2 transition-all shrink-0 ${
-                      selectedImageIndex === idx ? "border-luxury-gold scale-105" : "border-white/10 opacity-60 hover:opacity-100"
+                    className={`relative w-16 h-16 rounded-xl overflow-hidden border-2 transition-all shrink-0 bg-white ${
+                      selectedImageIndex === idx
+                        ? "border-blue-600 scale-105"
+                        : "border-slate-200 opacity-70 hover:opacity-100"
                     }`}
                   >
-                    <Image src={img} alt="Thumb" fill className="object-cover" />
+                    <Image src={img} alt="Thumbnail" fill sizes="64px" className="object-contain p-1" />
                   </button>
                 ))}
               </div>
             )}
           </div>
 
-          {/* Right Column - Product Info */}
-          <div className="p-6 md:p-8 flex flex-col justify-between space-y-6">
-            <div>
-              <div className="flex items-center justify-between">
-                <span className="text-xs uppercase tracking-widest font-semibold text-luxury-gold">
+          {/* Right Column - Product Meta */}
+          <div className="p-6 sm:p-8 flex flex-col justify-between space-y-6">
+            <div className="space-y-4">
+              <div>
+                <span className="text-xs uppercase tracking-wider font-bold text-blue-600">
                   {product.category}
                 </span>
-                <span className="text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full font-medium">
-                  In Stock ({product.stock} available)
-                </span>
+                <h2 className="text-xl sm:text-2xl font-black text-slate-900 mt-1 leading-snug">
+                  {product.title}
+                </h2>
               </div>
 
-              <h2 className="text-2xl font-serif font-bold text-white mt-2 mb-3">{product.title}</h2>
-
-              {/* Rating */}
-              <div className="flex items-center gap-2 mb-4">
-                <div className="flex text-amber-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 stroke-none" />
-                  ))}
+              {/* Rating & Reviews */}
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded-lg border border-amber-200/60">
+                  <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  <span className="text-xs font-black text-slate-900">{product.rating}</span>
                 </div>
-                <span className="text-sm font-semibold text-white">{product.rating}</span>
-                <span className="text-xs text-zinc-400">({product.numReviews} client reviews)</span>
+                <span className="text-xs text-slate-500 font-medium">({product.numReviews} Verified Reviews)</span>
+                <span className="text-slate-300">•</span>
+                <span className="text-xs font-bold text-emerald-600">● In Stock</span>
               </div>
 
               {/* Price */}
-              <div className="flex items-baseline gap-3 mb-6">
-                <span className="text-3xl font-bold text-white gold-text-gradient">
+              <div className="flex items-baseline gap-3 pt-2">
+                <span className="text-2xl sm:text-3xl font-black text-slate-900">
                   {formatCurrency(product.discountPrice || product.price)}
                 </span>
                 {product.discountPrice && (
-                  <span className="text-lg text-zinc-500 line-through">
+                  <span className="text-base text-slate-400 line-through">
                     {formatCurrency(product.price)}
                   </span>
                 )}
               </div>
 
-              <p className="text-sm text-zinc-300 leading-relaxed mb-6">
+              {/* Description */}
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                 {product.description}
               </p>
 
-              {/* Details List */}
+              {/* Specifications / Highlights */}
               {product.details && product.details.length > 0 && (
-                <div className="space-y-2 mb-6">
-                  <h4 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Specifications</h4>
-                  <ul className="text-xs text-zinc-300 space-y-1.5 list-disc list-inside">
+                <div className="space-y-1.5 pt-2 border-t border-slate-100">
+                  <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Product Highlights</span>
+                  <ul className="space-y-1 text-xs text-slate-600">
                     {product.details.map((detail, idx) => (
-                      <li key={idx}>{detail}</li>
+                      <li key={idx} className="flex items-start gap-2">
+                        <Check className="w-3.5 h-3.5 text-blue-600 shrink-0 mt-0.5" />
+                        <span>{detail}</span>
+                      </li>
                     ))}
                   </ul>
                 </div>
               )}
             </div>
 
-            {/* Actions */}
-            <div className="space-y-4">
+            {/* Actions: Quantity + Add to Cart + Wishlist */}
+            <div className="space-y-4 pt-4 border-t border-slate-100">
               <div className="flex items-center gap-4">
-                <div className="flex items-center border border-white/10 rounded-xl bg-black/40 px-3 py-2">
+                {/* Quantity selector */}
+                <div className="flex items-center border border-slate-200 rounded-xl bg-slate-50 px-3 py-2">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="text-zinc-400 hover:text-white px-2 font-bold"
+                    className="text-slate-600 hover:text-slate-900 font-bold px-1"
                   >
                     -
                   </button>
-                  <span className="text-sm font-semibold text-white px-4">{quantity}</span>
+                  <span className="text-xs font-black text-slate-900 px-3">{quantity}</span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
-                    className="text-zinc-400 hover:text-white px-2 font-bold"
+                    className="text-slate-600 hover:text-slate-900 font-bold px-1"
                   >
                     +
                   </button>
                 </div>
 
+                {/* Add to Cart button */}
                 <button
-                  onClick={() => {
-                    addToCart(product, quantity);
-                    onClose();
-                  }}
-                  className="flex-1 py-3.5 px-6 rounded-xl bg-gradient-to-r from-luxury-gold-dark via-luxury-gold to-luxury-gold-light hover:brightness-110 text-black font-bold text-sm tracking-wide flex items-center justify-center gap-2 shadow-lg shadow-luxury-gold/20 transition-all"
-                >
-                  <ShoppingBag className="w-4 h-4" />
-                  Add to Bag
-                </button>
-
-                <button
-                  onClick={() => toggleWishlist(product.id)}
-                  className={`p-3.5 rounded-xl border transition-colors ${
-                    inWishlist
-                      ? "bg-red-500/10 border-red-500/30 text-red-500"
-                      : "bg-white/5 border-white/10 text-zinc-400 hover:text-white"
+                  onClick={handleAddToCart}
+                  className={`flex-1 py-3 px-6 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all ${
+                    added
+                      ? "bg-emerald-600 text-white"
+                      : "bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/20"
                   }`}
                 >
-                  <Heart className={`w-5 h-5 ${inWishlist ? "fill-red-500" : ""}`} />
+                  {added ? (
+                    <>
+                      <Check className="w-4 h-4 stroke-[3]" />
+                      <span>Added to Bag!</span>
+                    </>
+                  ) : (
+                    <>
+                      <ShoppingBag className="w-4 h-4" />
+                      <span>Add to Cart • {formatCurrency((product.discountPrice || product.price) * quantity)}</span>
+                    </>
+                  )}
+                </button>
+
+                {/* Wishlist button */}
+                <button
+                  onClick={() => toggleWishlist(product.id)}
+                  className={`w-12 h-12 rounded-xl border flex items-center justify-center transition-colors ${
+                    inWishlist
+                      ? "bg-rose-50 border-rose-200 text-rose-600"
+                      : "border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-rose-600"
+                  }`}
+                  title="Wishlist"
+                >
+                  <Heart className={`w-5 h-5 ${inWishlist ? "fill-rose-500 text-rose-500" : ""}`} />
                 </button>
               </div>
 
-              {/* Guarantees */}
-              <div className="grid grid-cols-3 gap-2 pt-4 border-t border-white/10 text-[11px] text-zinc-400 text-center">
-                <div className="flex flex-col items-center gap-1">
-                  <ShieldCheck className="w-4 h-4 text-luxury-gold" />
-                  <span>Authenticity Guaranteed</span>
+              {/* Trust Micro-Badges */}
+              <div className="grid grid-cols-3 gap-2 pt-2 text-[11px] text-slate-500 text-center font-medium">
+                <div className="flex items-center justify-center gap-1">
+                  <Truck className="w-3.5 h-3.5 text-blue-600" />
+                  <span>Free Delivery</span>
                 </div>
-                <div className="flex flex-col items-center gap-1">
-                  <Truck className="w-4 h-4 text-luxury-gold" />
-                  <span>Complimentary Shipping</span>
+                <div className="flex items-center justify-center gap-1">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>Genuine 100%</span>
                 </div>
-                <div className="flex flex-col items-center gap-1">
-                  <RefreshCw className="w-4 h-4 text-luxury-gold" />
-                  <span>30-Day Bespoke Returns</span>
+                <div className="flex items-center justify-center gap-1">
+                  <RotateCcw className="w-3.5 h-3.5 text-amber-600" />
+                  <span>7-Day Return</span>
                 </div>
               </div>
             </div>

@@ -17,7 +17,7 @@ export default function AdminBrandsPage() {
       id: `b-${Date.now()}`,
       name,
       country,
-      logo: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=300&auto=format&fit=crop",
+      logo: "https://images.unsplash.com/photo-1526738549149-8e07eca6c147?q=80&w=300&auto=format&fit=crop",
       productCount: 1,
     };
     setBrands([newBrand, ...brands]);

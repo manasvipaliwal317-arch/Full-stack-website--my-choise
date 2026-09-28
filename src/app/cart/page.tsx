@@ -5,26 +5,28 @@ import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "@/context/cart-context";
 import { formatCurrency } from "@/lib/utils";
-import { Trash2, Plus, Minus, ArrowRight, ShoppingBag, ShieldCheck, Sparkles } from "lucide-react";
+import { Trash2, Plus, Minus, ArrowRight, ShoppingBag, ShieldCheck, Truck } from "lucide-react";
 
 export default function CartPage() {
   const { cart, removeFromCart, updateQuantity, subtotal, discount, totalAmount, totalItems, clearCart } = useCart();
 
+  const isFreeDelivery = subtotal >= 499;
+
   if (cart.length === 0) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-24 text-center space-y-6">
-        <div className="w-20 h-20 rounded-full bg-white/5 mx-auto flex items-center justify-center text-zinc-500">
+      <div className="max-w-4xl mx-auto px-4 py-20 text-center space-y-5">
+        <div className="w-20 h-20 rounded-3xl bg-blue-50 text-blue-600 mx-auto flex items-center justify-center">
           <ShoppingBag className="w-10 h-10 stroke-[1.5]" />
         </div>
-        <h2 className="text-3xl font-serif font-bold text-white">Your Atelier Bag is Empty</h2>
-        <p className="text-xs sm:text-sm text-zinc-400 max-w-sm mx-auto">
-          Explore our haute horlogerie, 18K solid gold fine jewelry, and Italian leather weekender bags.
+        <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Your Cart is Empty</h2>
+        <p className="text-xs sm:text-sm text-slate-500 max-w-sm mx-auto">
+          Explore trending smartphones, headphones, smart watches, fashion apparel, and footwear!
         </p>
         <Link
           href="/products"
-          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-luxury-gold text-black font-bold text-xs uppercase tracking-wider hover:bg-luxury-gold-dark transition-all shadow-lg"
+          className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-blue-600 text-white font-bold text-xs uppercase tracking-wider hover:bg-blue-700 transition-all shadow-md shadow-blue-500/20"
         >
-          Explore Collections
+          Explore Products
           <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
@@ -32,69 +34,75 @@ export default function CartPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 border-b border-white/10 pb-6">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 border-b border-slate-200 pb-5">
         <div>
-          <span className="text-xs uppercase tracking-widest font-semibold text-luxury-gold">Your Order Selection</span>
-          <h1 className="text-3xl sm:text-4xl font-serif font-bold text-white mt-1">Shopping Bag ({totalItems})</h1>
+          <span className="text-xs uppercase tracking-wider font-bold text-blue-600">Review Items</span>
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 mt-0.5">
+            Shopping Cart ({totalItems} items)
+          </h1>
         </div>
         <button
           onClick={clearCart}
-          className="text-xs text-zinc-400 hover:text-red-400 transition-colors flex items-center gap-1"
+          className="text-xs text-slate-500 hover:text-rose-600 transition-colors flex items-center gap-1 font-semibold"
         >
-          <Trash2 className="w-3.5 h-3.5" /> Empty Bag
+          <Trash2 className="w-4 h-4" /> Empty Cart
         </button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Cart Item List */}
         <div className="lg:col-span-8 space-y-4">
           {cart.map(({ product, quantity }) => (
             <div
               key={product.id}
-              className="p-4 sm:p-6 rounded-2xl glass-card border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+              className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
             >
               <div className="flex items-center gap-4">
-                <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-zinc-900 border border-white/10 shrink-0">
-                  <Image src={product.images[0]} alt={product.title} fill className="object-cover" />
+                <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-slate-50 border border-slate-100 shrink-0">
+                  <Image src={product.images[0]} alt={product.title} fill sizes="96px" className="object-contain p-2" />
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[10px] uppercase font-bold text-luxury-gold tracking-widest">
+                  <span className="text-[11px] uppercase font-bold text-blue-600 tracking-wider">
                     {product.category}
                   </span>
-                  <h3 className="text-base font-serif font-semibold text-white line-clamp-1">{product.title}</h3>
-                  <p className="text-xs text-zinc-400 font-light line-clamp-1">{product.description}</p>
-                  <span className="text-sm font-bold text-white block pt-1">
+                  <Link href={`/products/${product.id}`}>
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 hover:text-blue-600 transition-colors line-clamp-1">
+                      {product.title}
+                    </h3>
+                  </Link>
+                  <p className="text-xs text-slate-500 line-clamp-1">{product.description}</p>
+                  <span className="text-sm font-black text-slate-900 block pt-1">
                     {formatCurrency(product.discountPrice || product.price)}
                   </span>
                 </div>
               </div>
 
               {/* Quantity Controls & Remove */}
-              <div className="flex items-center justify-between w-full sm:w-auto gap-6 border-t sm:border-t-0 pt-4 sm:pt-0 border-white/10">
-                <div className="flex items-center border border-white/10 rounded-xl bg-black/40 px-3 py-1.5">
+              <div className="flex items-center justify-between w-full sm:w-auto gap-6 border-t sm:border-t-0 pt-4 sm:pt-0 border-slate-100">
+                <div className="flex items-center border border-slate-200 rounded-xl bg-slate-50 px-3 py-1.5">
                   <button
                     onClick={() => updateQuantity(product.id, quantity - 1)}
-                    className="text-zinc-400 hover:text-white px-2 font-bold"
+                    className="text-slate-500 hover:text-slate-900 px-2 font-bold"
                   >
                     -
                   </button>
-                  <span className="text-xs font-semibold text-white px-3">{quantity}</span>
+                  <span className="text-xs font-bold text-slate-900 px-3">{quantity}</span>
                   <button
                     onClick={() => updateQuantity(product.id, quantity + 1)}
-                    className="text-zinc-400 hover:text-white px-2 font-bold"
+                    className="text-slate-500 hover:text-slate-900 px-2 font-bold"
                   >
                     +
                   </button>
                 </div>
 
                 <div className="text-right">
-                  <span className="text-base font-bold gold-text-gradient block">
+                  <span className="text-base font-black text-slate-900 block">
                     {formatCurrency((product.discountPrice || product.price) * quantity)}
                   </span>
                   <button
                     onClick={() => removeFromCart(product.id)}
-                    className="text-xs text-zinc-500 hover:text-red-400 transition-colors"
+                    className="text-xs text-slate-400 hover:text-rose-600 font-medium transition-colors"
                   >
                     Remove
                   </button>
@@ -106,51 +114,53 @@ export default function CartPage() {
 
         {/* Order Summary Card */}
         <div className="lg:col-span-4">
-          <div className="sticky top-28 p-6 rounded-2xl glass-panel border border-white/10 space-y-6">
-            <h3 className="text-lg font-serif font-bold text-white pb-4 border-b border-white/10">
+          <div className="sticky top-32 p-6 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-5">
+            <h3 className="text-lg font-black text-slate-900 pb-3 border-b border-slate-100">
               Order Summary
             </h3>
 
-            <div className="space-y-3 text-xs text-zinc-300">
+            <div className="space-y-2.5 text-xs text-slate-600">
               <div className="flex justify-between">
                 <span>Items Subtotal</span>
-                <span className="text-white font-medium">{formatCurrency(subtotal)}</span>
+                <span className="text-slate-900 font-bold">{formatCurrency(subtotal)}</span>
               </div>
 
               {discount > 0 && (
-                <div className="flex justify-between text-emerald-400">
-                  <span>Promotional Savings</span>
+                <div className="flex justify-between text-emerald-600 font-bold">
+                  <span>Discount</span>
                   <span>-{formatCurrency(discount)}</span>
                 </div>
               )}
 
-              <div className="flex justify-between">
-                <span>White-Glove Shipping</span>
-                <span className="text-emerald-400 font-semibold">Complimentary</span>
+              <div className="flex justify-between items-center">
+                <span className="flex items-center gap-1">
+                  <Truck className="w-3.5 h-3.5 text-blue-600" />
+                  <span>Standard Delivery</span>
+                </span>
+                <span className={`font-bold ${isFreeDelivery ? "text-emerald-600" : "text-slate-900"}`}>
+                  {isFreeDelivery ? "FREE (Orders > ₹499)" : "₹49"}
+                </span>
               </div>
 
-              <div className="flex justify-between">
-                <span>Duties & Import Taxes</span>
-                <span className="text-zinc-400">Included</span>
-              </div>
-
-              <div className="pt-4 border-t border-white/10 flex justify-between items-baseline text-sm font-bold text-white">
-                <span>Total Investment</span>
-                <span className="text-xl gold-text-gradient">{formatCurrency(totalAmount)}</span>
+              <div className="pt-3 border-t border-slate-200 flex justify-between items-baseline text-sm font-bold text-slate-900">
+                <span>Total Amount</span>
+                <span className="text-xl font-black text-blue-600">
+                  {formatCurrency(totalAmount + (isFreeDelivery ? 0 : 49))}
+                </span>
               </div>
             </div>
 
             <Link
               href="/checkout"
-              className="w-full py-4 rounded-xl bg-gradient-to-r from-luxury-gold-dark via-luxury-gold to-luxury-gold-light hover:brightness-110 text-black font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-xl shadow-luxury-gold/20 transition-all"
+              className="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md shadow-blue-500/20 transition-all hover:scale-[1.01]"
             >
-              Proceed to Secure Checkout
+              Proceed to Checkout
               <ArrowRight className="w-4 h-4" />
             </Link>
 
-            <div className="flex items-center gap-2 text-[11px] text-zinc-400 justify-center pt-2">
-              <ShieldCheck className="w-4 h-4 text-luxury-gold" />
-              <span>Protected by 256-Bit SSL Encryption</span>
+            <div className="flex items-center gap-2 text-[11px] text-slate-500 justify-center pt-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              <span>Safe & Secure 256-Bit SSL Checkout</span>
             </div>
           </div>
         </div>

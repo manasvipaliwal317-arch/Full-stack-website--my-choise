@@ -12,10 +12,12 @@
     "prisma:seed": "node prisma/seed.js"
   },
   "dependencies": {
-    "@neondatabase/serverless": "^0.10.4",
     "@hookform/resolvers": "^3.9.1",
+    "@neondatabase/serverless": "^0.10.4",
     "@prisma/client": "^5.22.0",
+    "@types/canvas-confetti": "^1.9.0",
     "bcryptjs": "^2.4.3",
+    "canvas-confetti": "^1.9.4",
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.17",
     "jose": "^5.9.6",
