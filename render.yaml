@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: my-choise-ecommerce
+    runtime: node
+    plan: free
+    region: oregon
+    branch: main
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NEXT_PUBLIC_APP_URL
+        sync: false
