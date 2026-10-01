@@ -115,10 +115,10 @@ export function FestivalHeroBanner() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="inline-flex items-center gap-2 sm:gap-3"
+              className="inline-flex items-center gap-1.5 sm:gap-3 max-w-full"
             >
               {/* Left Elephant Silhouette with Crown */}
-              <div className="relative w-12 sm:w-16 h-10 sm:h-12 shrink-0 opacity-95">
+              <div className="relative w-8 sm:w-16 h-7 sm:h-12 shrink-0 opacity-95">
                 <svg viewBox="0 0 100 80" fill="none" className="w-full h-full drop-shadow-md">
                   <path
                     d="M85 45 C85 25 70 15 50 15 C30 15 15 28 15 50 C15 65 25 75 35 75 L45 75 C45 68 50 65 55 65 C60 65 65 68 65 75 L75 75 C85 75 85 60 85 45 Z"
@@ -135,17 +135,17 @@ export function FestivalHeroBanner() {
               {/* Central Seal & Ribbon */}
               <div className="flex flex-col items-center">
                 {/* Circular Sunburst Seal */}
-                <div className="relative px-5 sm:px-7 py-2.5 rounded-full bg-gradient-to-b from-[#FFFDF0] to-[#FFF3C4] border-2 border-amber-300 shadow-xl text-center">
-                  <span className="text-[10px] sm:text-xs font-black tracking-widest text-[#B45309] block uppercase">
+                <div className="relative px-3.5 sm:px-7 py-1.5 sm:py-2.5 rounded-full bg-gradient-to-b from-[#FFFDF0] to-[#FFF3C4] border-2 border-amber-300 shadow-xl text-center">
+                  <span className="text-[9px] sm:text-xs font-black tracking-widest text-[#B45309] block uppercase">
                     my choise
                   </span>
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-[#831843] leading-none py-0.5 font-serif uppercase">
+                  <div className="text-base sm:text-2xl lg:text-3xl font-black tracking-tight text-[#831843] leading-none py-0.5 font-serif uppercase">
                     {festivalSettings.title || "Great Indian Festival"}
                   </div>
                 </div>
 
                 {/* Hanging Deep Ribbon: "Diwali Special" */}
-                <div className="-mt-2 relative z-10 px-4 sm:px-6 py-1 rounded-md bg-[#4A0426] text-amber-200 border border-amber-300/70 shadow-lg text-[11px] sm:text-xs font-black uppercase tracking-wider flex items-center gap-1.5">
+                <div className="-mt-1.5 sm:-mt-2 relative z-10 px-3 sm:px-6 py-0.5 sm:py-1 rounded-md bg-[#4A0426] text-amber-200 border border-amber-300/70 shadow-lg text-[10px] sm:text-xs font-black uppercase tracking-wider flex items-center gap-1.5">
                   <span className="text-amber-400">★</span>
                   <span>{festivalSettings.festivalTag || "Diwali Special"}</span>
                   <span className="text-amber-400">★</span>
@@ -153,7 +153,7 @@ export function FestivalHeroBanner() {
               </div>
 
               {/* Right Elephant Silhouette with Crown */}
-              <div className="relative w-12 sm:w-16 h-10 sm:h-12 shrink-0 opacity-95 scale-x-[-1]">
+              <div className="relative w-8 sm:w-16 h-7 sm:h-12 shrink-0 opacity-95 scale-x-[-1]">
                 <svg viewBox="0 0 100 80" fill="none" className="w-full h-full drop-shadow-md">
                   <path
                     d="M85 45 C85 25 70 15 50 15 C30 15 15 28 15 50 C15 65 25 75 35 75 L45 75 C45 68 50 65 55 65 C60 65 65 68 65 75 L75 75 C85 75 85 60 85 45 Z"
@@ -174,11 +174,11 @@ export function FestivalHeroBanner() {
               transition={{ duration: 0.45, delay: 0.1 }}
               className="space-y-1.5"
             >
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
                 {festivalSettings.discountText || "Up to 80% off*"}
               </h2>
 
-              <p className="text-xl sm:text-2xl font-bold text-amber-200 tracking-tight">
+              <p className="text-lg sm:text-2xl font-bold text-amber-200 tracking-tight">
                 {festivalSettings.categoryHighlight || "Electronics & accessories"}
               </p>
             </motion.div>
@@ -199,10 +199,10 @@ export function FestivalHeroBanner() {
             </div>
 
             {/* 4. ACTION BUTTONS (Shop Now pill button + Coupon copy) */}
-            <div className="flex flex-wrap items-center gap-3.5 pt-2">
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3.5 pt-2">
               <Link
                 href={festivalSettings.ctaLink || "/products"}
-                className="px-8 sm:px-10 py-3 sm:py-3.5 rounded-full bg-white hover:bg-amber-100 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-black/20 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 group"
+                className="px-6 sm:px-10 py-2.5 sm:py-3.5 rounded-full bg-white hover:bg-amber-100 text-slate-950 font-black text-xs sm:text-base shadow-xl shadow-black/20 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 group"
               >
                 <span>{festivalSettings.ctaText || "Shop Now"}</span>
                 <ArrowRight className="w-4 h-4 stroke-[3] group-hover:translate-x-1 transition-transform" />
@@ -278,12 +278,12 @@ export function FestivalHeroBanner() {
           <div className="lg:col-span-6 xl:col-span-5 relative flex items-center justify-center pt-4 lg:pt-0">
             
             {/* The Illuminated Golden Archway (Matching Reference Image) */}
-            <div className="relative w-full max-w-md sm:max-w-lg aspect-[4/3.8] rounded-t-full border-[3px] border-amber-300/80 shadow-[0_0_60px_rgba(251,191,36,0.35)] bg-gradient-to-b from-amber-400/15 via-transparent to-black/30 flex items-end justify-center p-4 overflow-visible">
+            <div className="relative w-full max-w-[320px] sm:max-w-md lg:max-w-lg aspect-[4/3.8] rounded-t-full border-[3px] border-amber-300/80 shadow-[0_0_60px_rgba(251,191,36,0.35)] bg-gradient-to-b from-amber-400/15 via-transparent to-black/30 flex items-end justify-center p-3 sm:p-4 overflow-visible">
               
               {/* Fairy Lights along Arch perimeter */}
-              <div className="absolute inset-x-8 top-3 flex justify-between pointer-events-none opacity-80">
+              <div className="absolute inset-x-6 sm:inset-x-8 top-3 flex justify-between pointer-events-none opacity-80">
                 {[...Array(7)].map((_, idx) => (
-                  <div key={idx} className="w-2 h-2 rounded-full bg-amber-200 shadow-[0_0_6px_#FEF08A] animate-pulse" />
+                  <div key={idx} className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-amber-200 shadow-[0_0_6px_#FEF08A] animate-pulse" />
                 ))}
               </div>
 
@@ -291,7 +291,7 @@ export function FestivalHeroBanner() {
               <motion.div
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-64 sm:w-80 aspect-[16/10] z-10 transition-transform duration-500 hover:scale-105"
+                className="relative w-52 sm:w-80 aspect-[16/10] z-10 transition-transform duration-500 hover:scale-105"
               >
                 <div className="relative w-full h-full rounded-xl overflow-hidden border border-slate-700 bg-slate-900 shadow-2xl">
                   {/* Laptop Screen Content with Specs */}
@@ -299,15 +299,15 @@ export function FestivalHeroBanner() {
                     src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=800&auto=format&fit=crop"
                     alt="StreamBook Laptop"
                     fill
-                    sizes="(max-width: 640px) 250px, 320px"
+                    sizes="(max-width: 640px) 210px, 320px"
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-2.5">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-2 sm:p-2.5">
                     <div className="flex items-center justify-between text-white">
-                      <span className="text-[10px] font-black bg-blue-600/90 px-2 py-0.5 rounded shadow">
+                      <span className="text-[9px] sm:text-[10px] font-black bg-blue-600/90 px-1.5 sm:px-2 py-0.5 rounded shadow">
                         Intel Core Ultra 5
                       </span>
-                      <span className="text-[9px] font-bold text-amber-300 bg-black/60 px-1.5 py-0.5 rounded">
+                      <span className="text-[8px] sm:text-[9px] font-bold text-amber-300 bg-black/60 px-1 sm:px-1.5 py-0.5 rounded">
                         16GB SSD
                       </span>
                     </div>
@@ -315,21 +315,21 @@ export function FestivalHeroBanner() {
                 </div>
 
                 {/* Laptop Keyboard Base shadow reflection */}
-                <div className="w-[92%] h-2.5 mx-auto bg-slate-800 rounded-b-md shadow-lg" />
+                <div className="w-[92%] h-2 sm:h-2.5 mx-auto bg-slate-800 rounded-b-md shadow-lg" />
               </motion.div>
 
               {/* 2. Foreground Left: White Wireless Studio Headphones (Floating Levitation) */}
               <motion.div
                 animate={{ y: [0, -10, 0], rotate: [-1.5, 1, -1.5] }}
                 transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-1 -left-2 sm:left-2 w-24 sm:w-28 h-28 sm:h-32 z-20 drop-shadow-2xl transition-transform hover:scale-110"
+                className="absolute -bottom-1 left-0 sm:left-2 w-20 sm:w-28 h-24 sm:h-32 z-20 drop-shadow-2xl transition-transform hover:scale-110"
               >
-                <div className="relative w-full h-full rounded-2xl overflow-hidden bg-white/95 p-1.5 border border-slate-200/80 shadow-2xl">
+                <div className="relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden bg-white/95 p-1 sm:p-1.5 border border-slate-200/80 shadow-2xl">
                   <Image
                     src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop"
                     alt="Studio ANC Headphones"
                     fill
-                    sizes="110px"
+                    sizes="(max-width: 640px) 80px, 110px"
                     className="object-contain p-1"
                   />
                 </div>
@@ -339,25 +339,25 @@ export function FestivalHeroBanner() {
               <motion.div
                 animate={{ y: [0, -11, 0], rotate: [1, -1.5, 1] }}
                 transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-                className="absolute -bottom-1 -right-2 sm:right-2 w-22 sm:w-26 h-26 sm:h-30 z-20 drop-shadow-2xl transition-transform hover:scale-110"
+                className="absolute -bottom-1 right-0 sm:right-2 w-18 sm:w-26 h-22 sm:h-30 z-20 drop-shadow-2xl transition-transform hover:scale-110"
               >
-                <div className="relative w-20 sm:w-24 h-24 sm:h-28 rounded-2xl overflow-hidden bg-slate-900 p-1.5 border border-amber-300/40 shadow-2xl">
+                <div className="relative w-18 sm:w-24 h-22 sm:h-28 rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 p-1 sm:p-1.5 border border-amber-300/40 shadow-2xl">
                   <Image
                     src="/products/smartwatch-black.jpg"
                     alt="AMOLED Smart Watch"
                     fill
-                    sizes="100px"
+                    sizes="(max-width: 640px) 72px, 100px"
                     className="object-contain p-1"
                   />
                 </div>
               </motion.div>
 
               {/* 4. Traditional Golden Lit Diyas at corners on the ground */}
-              <div className="absolute -bottom-3 left-4 z-30 flex items-center gap-1">
-                <Flame className="w-5 h-5 text-amber-400 fill-amber-400 animate-pulse drop-shadow-[0_0_8px_#F59E0B]" />
+              <div className="absolute -bottom-3 left-3 sm:left-4 z-30 flex items-center gap-1">
+                <Flame className="w-4 sm:w-5 h-4 sm:h-5 text-amber-400 fill-amber-400 animate-pulse drop-shadow-[0_0_8px_#F59E0B]" />
               </div>
-              <div className="absolute -bottom-3 right-4 z-30 flex items-center gap-1">
-                <Flame className="w-5 h-5 text-amber-400 fill-amber-400 animate-pulse drop-shadow-[0_0_8px_#F59E0B]" />
+              <div className="absolute -bottom-3 right-3 sm:right-4 z-30 flex items-center gap-1">
+                <Flame className="w-4 sm:w-5 h-4 sm:h-5 text-amber-400 fill-amber-400 animate-pulse drop-shadow-[0_0_8px_#F59E0B]" />
               </div>
 
               {/* Ground Reflective Shadow */}
@@ -367,41 +367,41 @@ export function FestivalHeroBanner() {
         </div>
 
         {/* ================= BOTTOM BANK PARTNER DISCOUNT STRIP ================= */}
-        <div className="relative z-20 bg-white border-t border-slate-200 py-3 shadow-sm">
-          <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-3 text-slate-900">
+        <div className="relative z-20 bg-white border-t border-slate-200 py-2.5 sm:py-3 shadow-sm">
+          <div className="max-w-7xl mx-auto px-3 sm:px-8 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-2.5 sm:gap-3 text-slate-900">
             {/* Left: Bank Partner Badges */}
-            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-4 text-xs">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-4 text-xs">
               {/* AXIS BANK */}
-              <div className="flex items-center gap-1 px-2.5 py-1 rounded bg-[#97144D]/10 border border-[#97144D]/30 text-[#97144D] font-black text-[11px]">
-                <span className="w-2 h-2 rounded-full bg-[#97144D]" />
+              <div className="flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded bg-[#97144D]/10 border border-[#97144D]/30 text-[#97144D] font-black text-[10px] sm:text-[11px]">
+                <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#97144D]" />
                 <span>AXIS BANK</span>
               </div>
 
               {/* BOBCARD */}
-              <div className="flex items-center gap-1 px-2.5 py-1 rounded bg-[#F26522]/10 border border-[#F26522]/30 text-[#F26522] font-black text-[11px]">
-                <span className="w-2 h-2 rounded-full bg-[#F26522]" />
+              <div className="flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded bg-[#F26522]/10 border border-[#F26522]/30 text-[#F26522] font-black text-[10px] sm:text-[11px]">
+                <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#F26522]" />
                 <span>BOBCARD</span>
               </div>
 
               {/* IDFC FIRST Bank */}
-              <div className="flex items-center gap-1 px-2.5 py-1 rounded bg-[#991B1B]/10 border border-[#991B1B]/30 text-[#991B1B] font-black text-[11px]">
-                <span className="w-2 h-2 rounded-full bg-[#991B1B]" />
+              <div className="flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded bg-[#991B1B]/10 border border-[#991B1B]/30 text-[#991B1B] font-black text-[10px] sm:text-[11px]">
+                <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#991B1B]" />
                 <span>IDFC FIRST Bank</span>
               </div>
 
               {/* RBL Bank */}
-              <div className="flex items-center gap-1 px-2.5 py-1 rounded bg-[#1E3A8A]/10 border border-[#1E3A8A]/30 text-[#1E3A8A] font-black text-[11px]">
-                <span className="w-2 h-2 rounded-full bg-[#1E3A8A]" />
+              <div className="flex items-center gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded bg-[#1E3A8A]/10 border border-[#1E3A8A]/30 text-[#1E3A8A] font-black text-[10px] sm:text-[11px]">
+                <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#1E3A8A]" />
                 <span>RBL Bank</span>
               </div>
             </div>
 
             {/* Right: Bank Discount Highlight */}
-            <div className="flex items-center gap-2 text-center sm:text-right">
-              <span className="text-base sm:text-lg font-black text-slate-950 tracking-tight">
+            <div className="flex items-center gap-1.5 sm:gap-2 text-center sm:text-right">
+              <span className="text-sm sm:text-lg font-black text-slate-950 tracking-tight">
                 {festivalSettings.bankOfferText || "10% Instant Discount*"}
               </span>
-              <span className="text-[11px] font-bold text-slate-500">
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-500">
                 {festivalSettings.bankOfferSubtext || "*T&C apply"}
               </span>
             </div>

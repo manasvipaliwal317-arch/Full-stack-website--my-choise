@@ -56,38 +56,38 @@ export default function CartPage() {
           {cart.map(({ product, quantity }) => (
             <div
               key={product.id}
-              className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+              className="p-3.5 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6"
             >
-              <div className="flex items-center gap-4">
-                <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-slate-50 border border-slate-100 shrink-0">
+              <div className="flex items-center gap-3 sm:gap-4 w-full sm:w-auto">
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden bg-slate-50 border border-slate-100 shrink-0">
                   <Image src={product.images[0]} alt={product.title} fill sizes="96px" className="object-contain p-2" />
                 </div>
-                <div className="space-y-1">
-                  <span className="text-[11px] uppercase font-bold text-blue-600 tracking-wider">
+                <div className="space-y-1 flex-1 min-w-0">
+                  <span className="text-[10px] sm:text-[11px] uppercase font-bold text-blue-600 tracking-wider">
                     {product.category}
                   </span>
                   <Link href={`/products/${product.id}`}>
-                    <h3 className="text-sm sm:text-base font-bold text-slate-900 hover:text-blue-600 transition-colors line-clamp-1">
+                    <h3 className="text-xs sm:text-base font-bold text-slate-900 hover:text-blue-600 transition-colors line-clamp-1">
                       {product.title}
                     </h3>
                   </Link>
                   <p className="text-xs text-slate-500 line-clamp-1">{product.description}</p>
-                  <span className="text-sm font-black text-slate-900 block pt-1">
+                  <span className="text-xs sm:text-sm font-black text-slate-900 block pt-0.5">
                     {formatCurrency(product.discountPrice || product.price)}
                   </span>
                 </div>
               </div>
 
               {/* Quantity Controls & Remove */}
-              <div className="flex items-center justify-between w-full sm:w-auto gap-6 border-t sm:border-t-0 pt-4 sm:pt-0 border-slate-100">
-                <div className="flex items-center border border-slate-200 rounded-xl bg-slate-50 px-3 py-1.5">
+              <div className="flex items-center justify-between w-full sm:w-auto gap-4 sm:gap-6 border-t sm:border-t-0 pt-3 sm:pt-0 border-slate-100">
+                <div className="flex items-center border border-slate-200 rounded-xl bg-slate-50 px-2.5 sm:px-3 py-1 sm:py-1.5">
                   <button
                     onClick={() => updateQuantity(product.id, quantity - 1)}
                     className="text-slate-500 hover:text-slate-900 px-2 font-bold"
                   >
                     -
                   </button>
-                  <span className="text-xs font-bold text-slate-900 px-3">{quantity}</span>
+                  <span className="text-xs font-bold text-slate-900 px-2 sm:px-3">{quantity}</span>
                   <button
                     onClick={() => updateQuantity(product.id, quantity + 1)}
                     className="text-slate-500 hover:text-slate-900 px-2 font-bold"
@@ -97,7 +97,7 @@ export default function CartPage() {
                 </div>
 
                 <div className="text-right">
-                  <span className="text-base font-black text-slate-900 block">
+                  <span className="text-sm sm:text-base font-black text-slate-900 block">
                     {formatCurrency((product.discountPrice || product.price) * quantity)}
                   </span>
                   <button

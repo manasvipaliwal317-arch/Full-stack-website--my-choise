@@ -453,7 +453,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
       </div>
 
       {/* 2. MAIN BALANCED PRODUCT PRESENTATION (NO UNWANTED SPACE) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-20 lg:pb-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-10 items-start">
           
           {/* ================= LEFT COLUMN: GALLERY & RUFUS (lg:col-span-5) ================= */}
@@ -1680,6 +1680,42 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
           </div>
         </div>
       )}
+
+      {/* MOBILE STICKY BOTTOM ACTION BAR (Native e-commerce app pattern for mobile) */}
+      <div className="lg:hidden fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-slate-200 py-2.5 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] z-40 flex items-center justify-between gap-3">
+        <div className="flex flex-col min-w-0">
+          <span className="text-[10px] text-slate-500 font-medium leading-none">Price</span>
+          <div className="flex items-baseline gap-1.5 mt-0.5">
+            <span className="text-base font-black text-slate-900 leading-tight">
+              {formatCurrency(currentPrice)}
+            </span>
+            {originalMrp > currentPrice && (
+              <span className="text-[11px] text-slate-400 line-through leading-tight">
+                {formatCurrency(originalMrp)}
+              </span>
+            )}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 shrink-0">
+          <button
+            type="button"
+            onClick={handleAddToCart}
+            className="px-3.5 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold text-xs transition-colors flex items-center gap-1.5 active:scale-95 border border-slate-200"
+          >
+            <ShoppingCart className="w-3.5 h-3.5 text-blue-600" />
+            <span>Add</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={handleBuyNow}
+            className="px-5 py-2.5 rounded-full bg-[#FFA41C] hover:bg-[#FA8900] text-slate-950 font-bold text-xs shadow-sm transition-all border border-[#FF8F00] active:scale-95"
+          >
+            Buy Now
+          </button>
+        </div>
+      </div>
 
     </div>
   );

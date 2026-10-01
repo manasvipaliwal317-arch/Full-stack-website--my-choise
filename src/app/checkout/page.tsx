@@ -139,23 +139,23 @@ export default function CheckoutPage() {
         {/* Form Column */}
         <div className="lg:col-span-7 space-y-6">
           {/* Step Indicator */}
-          <div className="flex items-center gap-3 text-xs font-bold">
+          <div className="flex items-center gap-2 sm:gap-3 text-xs font-bold overflow-x-auto pb-1 scrollbar-none">
             <button
               onClick={() => setStep("details")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-colors ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl border transition-colors shrink-0 ${
                 step === "details"
-                  ? "bg-blue-50 border-blue-400 text-blue-700"
+                  ? "bg-blue-50 border-blue-400 text-blue-700 font-bold"
                   : "bg-white border-slate-200 text-slate-600"
               }`}
             >
               <Truck className="w-4 h-4" /> 1. Shipping Address
             </button>
-            <span className="text-slate-300">→</span>
+            <span className="text-slate-300 shrink-0">→</span>
             <button
               onClick={() => setStep("payment")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-colors ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl border transition-colors shrink-0 ${
                 step === "payment"
-                  ? "bg-blue-50 border-blue-400 text-blue-700"
+                  ? "bg-blue-50 border-blue-400 text-blue-700 font-bold"
                   : "bg-white border-slate-200 text-slate-600"
               }`}
             >
@@ -165,7 +165,7 @@ export default function CheckoutPage() {
 
           <form onSubmit={handlePlaceOrder} className="space-y-6">
             {step === "details" && (
-              <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+              <div className="bg-white p-4 sm:p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
                 <h3 className="text-base font-bold text-slate-900 border-b border-slate-100 pb-3">
                   Customer & Shipping Information
                 </h3>
@@ -215,7 +215,7 @@ export default function CheckoutPage() {
                   />
                 </div>
 
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div>
                     <label className="block text-xs font-bold text-slate-700 mb-1">City</label>
                     <input

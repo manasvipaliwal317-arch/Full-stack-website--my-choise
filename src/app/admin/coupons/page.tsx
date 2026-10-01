@@ -46,7 +46,7 @@ export default function AdminCouponsPage() {
             <Ticket className="w-3.5 h-3.5" />
             <span>Discount Engine</span>
           </div>
-          <h1 className="text-3xl font-black text-white tracking-tight">Coupons & Promo Codes</h1>
+          <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">Coupons & Promo Codes</h1>
           <p className="text-xs text-zinc-400 mt-1">
             Create storewide promo codes. Customers can apply these codes in the cart drawer and checkout immediately.
           </p>
@@ -54,7 +54,7 @@ export default function AdminCouponsPage() {
 
         <button
           onClick={() => setIsModalOpen(true)}
-          className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-2 shadow-lg shadow-blue-600/30 transition-all"
+          className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30 transition-all"
         >
           <Plus className="w-4 h-4" /> Create Coupon
         </button>

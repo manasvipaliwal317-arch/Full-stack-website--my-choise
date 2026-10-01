@@ -183,71 +183,71 @@ export function Navbar() {
         </div>
 
         {/* MAIN HEADER ROW */}
-        <div className="py-3 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-6">
-            {/* Mobile Hamburger Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"
-              aria-label="Open menu"
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+        <div className="py-2.5 sm:py-3 px-3 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-6">
+            <div className="flex items-center gap-2 sm:gap-3">
+              {/* Mobile Hamburger Button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"
+                aria-label="Open menu"
+              >
+                {isMobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
+              </button>
 
-            {/* ULTRA-MODERN BRAND IDENTITY LOGO: my choise */}
-            <Link href="/" className="flex items-center gap-3 group shrink-0 select-none">
-              <div className="relative w-11 h-11 rounded-2xl bg-gradient-to-tr from-slate-950 via-slate-900 to-blue-900 p-0.5 shadow-lg shadow-blue-950/30 group-hover:scale-105 group-hover:shadow-indigo-500/25 transition-all duration-300">
-                <div className="w-full h-full rounded-[14px] bg-slate-950 flex items-center justify-center relative overflow-hidden">
-                  {/* Subtle animated light reflection sweep */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                  
-                  {/* Futuristic Geometric Monogram Icon */}
-                  <svg className="w-6 h-6" viewBox="0 0 32 32" fill="none">
-                    <path
-                      d="M24 10C21.5 7 17.5 6 12.5 8C7.5 10 5 14.5 5 19.5C5 24.5 8.5 27 13.5 27C18.5 27 22 24.5 23.5 21"
-                      stroke="url(#mc-brand-gradient)"
-                      strokeWidth="3.2"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M11 20V12.5L15.5 17L20 12.5V20"
-                      stroke="#FFFFFF"
-                      strokeWidth="2.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <circle cx="24.5" cy="8.5" r="2.2" fill="#F59E0B" />
-                    <defs>
-                      <linearGradient id="mc-brand-gradient" x1="5" y1="8" x2="25" y2="27" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#38BDF8" />
-                        <stop offset="0.5" stopColor="#6366F1" />
-                        <stop offset="1" stopColor="#EC4899" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
+              {/* ULTRA-MODERN BRAND IDENTITY LOGO: my choise */}
+              <Link href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0 select-none">
+                <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-slate-950 via-slate-900 to-blue-900 p-0.5 shadow-md shadow-blue-950/20 group-hover:scale-105 group-hover:shadow-indigo-500/25 transition-all duration-300">
+                  <div className="w-full h-full rounded-[10px] sm:rounded-[14px] bg-slate-950 flex items-center justify-center relative overflow-hidden">
+                    {/* Subtle animated light reflection sweep */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                    
+                    {/* Futuristic Geometric Monogram Icon */}
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 32 32" fill="none">
+                      <path
+                        d="M24 10C21.5 7 17.5 6 12.5 8C7.5 10 5 14.5 5 19.5C5 24.5 8.5 27 13.5 27C18.5 27 22 24.5 23.5 21"
+                        stroke="url(#mc-brand-gradient)"
+                        strokeWidth="3.2"
+                        strokeLinecap="round"
+                      />
+                      <path
+                        d="M11 20V12.5L15.5 17L20 12.5V20"
+                        stroke="#FFFFFF"
+                        strokeWidth="2.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <circle cx="24.5" cy="8.5" r="2.2" fill="#F59E0B" />
+                      <defs>
+                        <linearGradient id="mc-brand-gradient" x1="5" y1="8" x2="25" y2="27" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#38BDF8" />
+                          <stop offset="0.5" stopColor="#6366F1" />
+                          <stop offset="1" stopColor="#EC4899" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </div>
                 </div>
-              </div>
 
-              <div className="flex flex-col">
-                <div className="flex items-baseline font-brand leading-none">
-                  <span className="text-[25px] font-semibold text-slate-900 tracking-tight group-hover:text-blue-900 transition-colors">
-                    my
+                <div className="flex flex-col">
+                  <div className="flex items-baseline font-brand leading-none">
+                    <span className="text-xl sm:text-[25px] font-semibold text-slate-900 tracking-tight group-hover:text-blue-900 transition-colors">
+                      my
+                    </span>
+                    <span className="text-xl sm:text-[25px] font-extrabold tracking-tight ml-0.5 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600">
+                      choise
+                    </span>
+                    <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 ml-1 inline-block animate-pulse shadow-xs" />
+                  </div>
+                  <span className="hidden sm:block text-[8.5px] tracking-[0.28em] uppercase font-bold text-slate-400 group-hover:text-slate-500 transition-colors mt-0.5">
+                    Curated Marketplace
                   </span>
-                  <span className="text-[25px] font-extrabold tracking-tight ml-0.5 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600">
-                    choise
-                  </span>
-                  <span className="w-2 h-2 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 ml-1 inline-block animate-pulse shadow-xs" />
                 </div>
-                <span className="text-[8.5px] tracking-[0.28em] uppercase font-bold text-slate-400 group-hover:text-slate-500 transition-colors mt-0.5">
-                  Curated Marketplace
-                </span>
-              </div>
-            </Link>
+              </Link>
+            </div>
 
-
-
-            {/* SEARCH BAR (Animated glowing focus & gradient button) */}
-            <form onSubmit={handleSearch} className="flex-1 max-w-2xl relative flex items-center">
+            {/* DESKTOP SEARCH BAR (Animated glowing focus & gradient button) */}
+            <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-2xl relative items-center mx-4">
               <div className="w-full flex items-center rounded-2xl border border-slate-200 bg-slate-100/70 focus-within:bg-white focus-within:border-blue-600 focus-within:ring-4 focus-within:ring-blue-500/15 transition-all duration-200 shadow-inner">
                 {/* Category Dropdown inside search */}
                 <div className="relative shrink-0 hidden sm:block" ref={categoryMenuRef}>
@@ -313,11 +313,12 @@ export function Navbar() {
             </form>
 
             {/* ACTION ICONS (Account, Wishlist, Cart) WITH MICRO-INTERACTIONS */}
-            <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+            <div className="flex items-center gap-1 sm:gap-2.5 shrink-0">
               {/* Account */}
               <button
                 onClick={() => setIsAuthOpen(true)}
-                className="flex items-center gap-2 p-2 sm:px-3 sm:py-2 rounded-2xl text-slate-700 hover:text-blue-600 hover:bg-slate-100/80 transition-all hover:-translate-y-0.5 group"
+                className="flex items-center gap-2 p-1.5 sm:px-3 sm:py-2 rounded-2xl text-slate-700 hover:text-blue-600 hover:bg-slate-100/80 transition-all hover:-translate-y-0.5 group"
+                aria-label="Account"
               >
                 <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors">
                   <User className="w-4 h-4" />
@@ -331,8 +332,9 @@ export function Navbar() {
               {/* Wishlist */}
               <Link
                 href="/wishlist"
-                className="relative p-2 sm:px-3 sm:py-2 rounded-2xl text-slate-700 hover:text-rose-600 hover:bg-rose-50/60 transition-all flex items-center gap-2 hover:-translate-y-0.5 group"
+                className="relative p-1.5 sm:px-3 sm:py-2 rounded-2xl text-slate-700 hover:text-rose-600 hover:bg-rose-50/60 transition-all flex items-center gap-2 hover:-translate-y-0.5 group"
                 title="Wishlist"
+                aria-label="Wishlist"
               >
                 <div className="relative">
                   <Heart className="w-5 h-5 text-slate-700 group-hover:text-rose-600 transition-colors" />
@@ -357,7 +359,7 @@ export function Navbar() {
               {/* Cart Drawer Trigger */}
               <button
                 onClick={() => setIsCartOpen(true)}
-                className="relative flex items-center gap-2.5 p-2 sm:px-3.5 sm:py-2 bg-gradient-to-r from-blue-50 to-indigo-50/70 hover:from-blue-100 hover:to-indigo-100 border border-blue-200/80 rounded-2xl text-blue-800 font-bold transition-all shadow-xs hover:shadow-sm hover:-translate-y-0.5 group"
+                className="relative flex items-center gap-2 p-1.5 sm:px-3.5 sm:py-2 bg-gradient-to-r from-blue-50 to-indigo-50/70 hover:from-blue-100 hover:to-indigo-100 border border-blue-200/80 rounded-2xl text-blue-800 font-bold transition-all shadow-xs hover:shadow-sm hover:-translate-y-0.5 group"
                 aria-label="Open cart"
               >
                 <div className="relative">
@@ -377,7 +379,7 @@ export function Navbar() {
                     )}
                   </AnimatePresence>
                 </div>
-                <div className="flex flex-col text-left">
+                <div className="hidden sm:flex flex-col text-left">
                   <span className="text-[10px] text-blue-600/80 font-medium leading-none">Cart</span>
                   <span className="text-xs font-black text-blue-950 leading-tight">
                     {totalItems > 0 ? `₹${Math.round(subtotal).toLocaleString("en-IN")}` : "0 Items"}
@@ -386,6 +388,36 @@ export function Navbar() {
               </button>
             </div>
           </div>
+
+          {/* MOBILE DEDICATED SEARCH BAR (Full-width row under logo/actions on mobile) */}
+          <form onSubmit={handleSearch} className="md:hidden mt-2.5 w-full">
+            <div className="w-full flex items-center rounded-xl border border-slate-200 bg-slate-100/80 focus-within:bg-white focus-within:border-blue-600 focus-within:ring-2 focus-within:ring-blue-500/20 transition-all shadow-inner px-2 py-1">
+              <Search className="w-4 h-4 text-slate-400 ml-1.5 shrink-0" />
+              <input
+                type="text"
+                placeholder="Search smart watches, earbuds, brands..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-transparent px-2.5 py-1.5 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery("")}
+                  className="p-1 text-slate-400 hover:text-slate-600 mr-1"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              )}
+              <button
+                type="submit"
+                aria-label="Search"
+                className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold text-xs shrink-0 transition-colors shadow-xs active:scale-95"
+              >
+                Search
+              </button>
+            </div>
+          </form>
         </div>
 
         {/* SECONDARY CATEGORY STRIP WITH INTERACTIVE MEGA MENU */}
@@ -558,9 +590,30 @@ export function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden border-b border-slate-200 bg-white py-4 px-6 space-y-4 shadow-xl max-h-[80vh] overflow-y-auto"
+              className="lg:hidden border-b border-slate-200 bg-white py-4 px-4 sm:px-6 space-y-4 shadow-xl max-h-[80vh] overflow-y-auto"
             >
-
+              {/* User Account Quick Card at top of mobile drawer */}
+              <div className="flex items-center justify-between p-3 rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100/80">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shadow-xs">
+                    <User className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-slate-500 font-semibold block leading-tight">Welcome</span>
+                    <span className="text-xs font-bold text-slate-900 leading-tight">My Account</span>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setIsAuthOpen(true);
+                  }}
+                  className="px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition-colors shadow-xs active:scale-95"
+                >
+                  Sign In
+                </button>
+              </div>
 
               <div className="space-y-1">
                 <div className="text-[11px] font-black uppercase text-slate-400 px-2 tracking-wider">
@@ -657,6 +710,30 @@ export function Navbar() {
                   <span>Wishlist</span>
                   <span className="text-xs bg-rose-100 text-rose-600 px-2 py-0.5 rounded-full font-bold">
                     {wishlist.length}
+                  </span>
+                </Link>
+                <Link
+                  href="/my-orders"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="p-2 rounded-xl text-slate-800 hover:bg-slate-100 flex items-center justify-between"
+                >
+                  <span className="flex items-center gap-2">
+                    <Truck className="w-4 h-4 text-blue-600" />
+                    <span>My Orders & Tracking</span>
+                  </span>
+                  <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
+                </Link>
+                <Link
+                  href="/cart"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="p-2 rounded-xl text-slate-800 hover:bg-slate-100 flex items-center justify-between"
+                >
+                  <span className="flex items-center gap-2">
+                    <ShoppingBag className="w-4 h-4 text-blue-600" />
+                    <span>View Shopping Cart</span>
+                  </span>
+                  <span className="text-xs font-bold text-blue-600">
+                    {totalItems > 0 ? `${totalItems} items` : "Empty"}
                   </span>
                 </Link>
                 <Link

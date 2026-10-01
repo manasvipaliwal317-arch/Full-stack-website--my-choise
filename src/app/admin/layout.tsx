@@ -68,11 +68,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </button>
       </div>
 
+      {/* Mobile Backdrop */}
+      {sidebarOpen && (
+        <div
+          onClick={() => setSidebarOpen(false)}
+          className="fixed inset-0 bg-black/70 backdrop-blur-xs z-30 md:hidden"
+        />
+      )}
+
       {/* Sidebar Navigation */}
       <aside
         className={`${
-          sidebarOpen ? "block" : "hidden md:block"
-        } w-full md:w-64 bg-[#0A0B10] border-r border-white/10 p-5 shrink-0 flex flex-col justify-between space-y-6 z-30`}
+          sidebarOpen ? "fixed inset-y-0 left-0 z-40 w-72 max-w-[85vw] flex" : "hidden md:flex"
+        } md:static md:w-64 bg-[#0A0B10] border-r border-white/10 p-5 shrink-0 flex-col justify-between space-y-6 shadow-2xl md:shadow-none`}
       >
         <div className="space-y-6">
           {/* Logo Header */}

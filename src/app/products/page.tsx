@@ -131,7 +131,7 @@ function ProductsContent() {
           </div>
 
         {/* Search & Sort */}
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
           <div className="relative flex-1 sm:w-64">
             <Search className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
             <input
@@ -143,11 +143,11 @@ function ProductsContent() {
             />
           </div>
 
-          <div className="relative">
+          <div className="relative shrink-0">
             <select
               value={sortOption}
               onChange={(e: any) => setSortOption(e.target.value)}
-              className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-blue-600 cursor-pointer"
+              className="w-full sm:w-auto bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 focus:outline-none focus:border-blue-600 cursor-pointer"
             >
               <option value="featured">Sort: Featured</option>
               <option value="price-low">Price: Low to High</option>
@@ -212,7 +212,7 @@ function ProductsContent() {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
           {filteredProducts.map((product, idx) => (
             <ProductCard key={product.id} product={product} index={idx} />
           ))}

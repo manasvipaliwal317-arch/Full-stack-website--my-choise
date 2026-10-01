@@ -169,8 +169,8 @@ export default function HomePage() {
           </Link>
         </div>
 
-        {/* Circular Cards Horizontal Grid with Smooth Hover Effects */}
-        <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-9 gap-4 sm:gap-5">
+        {/* Circular Cards Horizontal Swipeable Track on Mobile, Grid on Desktop */}
+        <div className="flex items-start gap-4 overflow-x-auto pb-2 scrollbar-none sm:grid sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-9 sm:gap-5 -mx-4 px-4 sm:mx-0 sm:px-0">
           {CIRCLE_CATEGORIES.map((cat, idx) => (
             <motion.div
               key={cat.name}
@@ -179,7 +179,7 @@ export default function HomePage() {
               transition={{ delay: idx * 0.04, duration: 0.35, ease: "easeOut" }}
               whileHover={{ y: -8, scale: 1.05 }}
               whileTap={{ scale: 0.94 }}
-              className="flex flex-col items-center"
+              className="flex flex-col items-center shrink-0 w-20 sm:w-auto"
             >
               <Link
                 href={`/products?category=${cat.slug}`}
@@ -259,21 +259,21 @@ export default function HomePage() {
                   transition={{ duration: 0.4 }}
                   className="space-y-3"
                 >
-                  <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.1]">
+                  <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15]">
                     {currentHero.title}
                   </h1>
 
-                  <p className="text-slate-300 text-sm sm:text-base max-w-xl font-medium leading-relaxed">
+                  <p className="text-slate-300 text-xs sm:text-base max-w-xl font-medium leading-relaxed">
                     {currentHero.subtitle}
                   </p>
                 </motion.div>
               </AnimatePresence>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-3">
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-4 pt-2 sm:pt-3">
                 <Link
                   href={currentHero.ctaLink}
-                  className="px-8 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-sm tracking-wide shadow-lg shadow-amber-400/25 transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
+                  className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs sm:text-sm tracking-wide shadow-lg shadow-amber-400/25 transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
                 >
                   <span>{currentHero.ctaText}</span>
                   <ArrowRight className="w-4 h-4 stroke-[3]" />
@@ -281,7 +281,7 @@ export default function HomePage() {
 
                 <Link
                   href="/products"
-                  className="px-6 py-3.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-white font-bold text-sm border border-slate-700 transition-all"
+                  className="px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-white font-bold text-xs sm:text-sm border border-slate-700 transition-all"
                 >
                   Explore All Deals
                 </Link>
@@ -303,10 +303,10 @@ export default function HomePage() {
                   <motion.div
                     animate={{ rotate: [10, 14, 10], scale: [1, 1.05, 1] }}
                     transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-2 right-4 z-20 w-24 h-24 rounded-full bg-amber-400 text-slate-950 flex flex-col items-center justify-center font-black shadow-xl"
+                    className="absolute top-2 right-2 sm:right-4 z-20 w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-amber-400 text-slate-950 flex flex-col items-center justify-center font-black shadow-xl"
                   >
-                    <span className="text-[11px] uppercase tracking-tight leading-none font-bold">Save Up to</span>
-                    <span className="text-2xl font-black leading-tight">60%</span>
+                    <span className="text-[8px] sm:text-[11px] uppercase tracking-tight leading-none font-bold">Save Up to</span>
+                    <span className="text-base sm:text-2xl font-black leading-tight">60%</span>
                   </motion.div>
 
                   {/* Cutout Product Image with Gentle Floating Levitation */}
@@ -562,7 +562,7 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.28, ease: "easeOut" }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5"
           >
             {trendingProducts.map((product, idx) => (
               <ProductCard key={product.id} product={product} index={idx} />
@@ -596,20 +596,20 @@ export default function HomePage() {
         {/* Continuous Moving In-Line Marquee Track */}
         <div className="relative overflow-hidden py-3 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 group">
           {/* Left Gradient Fade Mask */}
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/90 to-transparent z-10" />
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/90 to-transparent z-10" />
 
           {/* Right Gradient Fade Mask */}
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-[#F8FAFC] via-[#F8FAFC]/90 to-transparent z-10" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-l from-[#F8FAFC] via-[#F8FAFC]/90 to-transparent z-10" />
 
           {/* Moving In-Line Track */}
-          <div className="flex gap-4 animate-marquee-line py-1">
+          <div className="flex gap-3 sm:gap-4 animate-marquee-line py-1">
             {[...BRANDS, ...BRANDS, ...BRANDS].map((brand, idx) => (
               <Link
                 key={`${brand.id}-${idx}`}
                 href={`/products?search=${encodeURIComponent(brand.name)}`}
-                className="w-44 sm:w-48 p-4 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 hover:shadow-lg transition-all flex flex-col items-center justify-center text-center shrink-0 group/card shadow-sm hover:-translate-y-1 duration-200"
+                className="w-36 sm:w-48 p-3 sm:p-4 rounded-2xl bg-white border border-slate-200/90 hover:border-blue-400 hover:shadow-lg transition-all flex flex-col items-center justify-center text-center shrink-0 group/card shadow-sm hover:-translate-y-1 duration-200"
               >
-                <div className="relative w-14 h-14 rounded-full overflow-hidden mb-3 bg-slate-50 p-2 border border-slate-100 flex items-center justify-center shadow-inner">
+                <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden mb-2 sm:mb-3 bg-slate-50 p-2 border border-slate-100 flex items-center justify-center shadow-inner">
                   <Image
                     src={brand.logo}
                     alt={brand.name}
@@ -618,7 +618,7 @@ export default function HomePage() {
                     className="object-cover group-hover/card:scale-110 transition-transform duration-300"
                   />
                 </div>
-                <span className="text-sm font-black text-slate-900 group-hover/card:text-blue-600 transition-colors">
+                <span className="text-xs sm:text-sm font-black text-slate-900 group-hover/card:text-blue-600 transition-colors">
                   {brand.name}
                 </span>
                 <span className="text-[10px] text-slate-400 font-medium mt-0.5">
@@ -632,22 +632,22 @@ export default function HomePage() {
 
       {/* 6. RECOMMENDED FOR YOU / PROMO BANNER */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {/* Banner 1: Audio Collection */}
           <motion.div
             whileHover={{ y: -6 }}
             transition={{ duration: 0.3 }}
-            className="rounded-3xl bg-gradient-to-r from-blue-700 to-indigo-800 p-8 text-white flex flex-col justify-between relative overflow-hidden shadow-xl min-h-[240px] group cursor-pointer"
+            className="rounded-3xl bg-gradient-to-r from-blue-700 to-indigo-800 p-6 sm:p-8 text-white flex flex-col justify-between relative overflow-hidden shadow-xl min-h-[220px] sm:min-h-[240px] group cursor-pointer"
           >
-            <div className="space-y-2 z-10 max-w-xs">
+            <div className="space-y-2 z-10 max-w-[220px] sm:max-w-xs">
               <span className="px-2.5 py-1 rounded-full bg-white/20 text-white text-[10px] font-black uppercase tracking-wider inline-block">
                 RECOMMENDED
               </span>
-              <h3 className="text-2xl font-black leading-tight">Next-Gen Audio & Earbuds</h3>
+              <h3 className="text-xl sm:text-2xl font-black leading-tight">Next-Gen Audio & Earbuds</h3>
               <p className="text-xs text-blue-100 font-medium">Immerse yourself with high-fidelity acoustic sound.</p>
               <Link
                 href="/products?category=audio"
-                className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-blue-700 font-black text-xs hover:bg-blue-50 transition-all shadow-md hover:scale-105 active:scale-95"
+                className="mt-3 sm:mt-4 inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-white text-blue-700 font-black text-xs hover:bg-blue-50 transition-all shadow-md hover:scale-105 active:scale-95"
               >
                 Explore Audio <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -667,17 +667,17 @@ export default function HomePage() {
           <motion.div
             whileHover={{ y: -6 }}
             transition={{ duration: 0.3 }}
-            className="rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 p-8 text-white flex flex-col justify-between relative overflow-hidden shadow-xl min-h-[240px] group cursor-pointer"
+            className="rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 p-6 sm:p-8 text-white flex flex-col justify-between relative overflow-hidden shadow-xl min-h-[220px] sm:min-h-[240px] group cursor-pointer"
           >
-            <div className="space-y-2 z-10 max-w-xs">
+            <div className="space-y-2 z-10 max-w-[220px] sm:max-w-xs">
               <span className="px-2.5 py-1 rounded-full bg-amber-400 text-slate-900 text-[10px] font-black uppercase tracking-wider inline-block">
                 UP TO 50% OFF
               </span>
-              <h3 className="text-2xl font-black leading-tight">Performance Footwear & Kicks</h3>
+              <h3 className="text-xl sm:text-2xl font-black leading-tight">Performance Footwear & Kicks</h3>
               <p className="text-xs text-slate-300 font-medium">Engineered for comfort, running, and street style.</p>
               <Link
                 href="/products?category=footwear"
-                className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-400 text-slate-950 font-black text-xs hover:bg-amber-300 transition-all shadow-md hover:scale-105 active:scale-95"
+                className="mt-3 sm:mt-4 inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-amber-400 text-slate-950 font-black text-xs hover:bg-amber-300 transition-all shadow-md hover:scale-105 active:scale-95"
               >
                 Shop Sneakers <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
